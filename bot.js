@@ -10,7 +10,7 @@ var music = require("./playlist.json");
  
 const token = "Hell Nah";
  
-var prefix = '.';
+var prefix = '=';
  
 var eb = ["You can help youself right?",
 "Not right now Please",
