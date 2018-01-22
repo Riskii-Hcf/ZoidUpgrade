@@ -89,7 +89,7 @@ break;
     if(message.member.roles.has(modRoles.id)) {
       let kickMember = message.guild.member(message.mentions.users.first());
       message.guild.member(kickMember).kick();
-      message.channel.sendMessage(":arrow_right: The Member Has Been Kicked From The Server! :point_left:");
+      message.channel.sendMessage(":fire: You Have been Kicked on " + message.guild.name + "\nReason: " + breason + "Responsible: " + message.author :fire:");
       message.mentions.users.first().send(`:x: **You have been KICKED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
     } else {
       return message.reply(":x: **You dont have permissions to do that!** :x:");
@@ -104,7 +104,7 @@ case "ban":
     if(message.member.roles.has(modRolesss.id)) {
       let banMember = message.guild.member(message.mentions.users.first());
       message.guild.member(banMember).ban();
-      message.channel.sendMessage(":fire: The User Has Been Banned On This Server :fire:");
+      message.channel.sendMessage(":fire: You Have been banned on " + message.guild.name + "\nReason: " + breason + "Responsible: " + message.author :fire:");
       message.mentions.users.first().send(`:x: **You have been PERM BANNED! on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
     } else {
       return message.reply(":x: **You dont have permissions to do that!** :x:");
