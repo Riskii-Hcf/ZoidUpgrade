@@ -189,34 +189,21 @@ return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
   
-case "prune":
- if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
-        if (args.length === 0) {
-            message.channel.send('Please provide a number.');
-        } else if (args.length === 1) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                var channel_id = message.channel.name
-                message.channel.bulkDelete(messages);
-        } else if (args.length === 2) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                let bulkMessages = [];
-                var channel_id = message.channel.name
-                messages.forEach((i) => {
-                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
-                        bulkMessages.push(i);
-                    }
-                });
-                message.channel.bulkDelete(bulkMessages);
-        } else {
-            message.channel.send(':x: This is not a number :x:');
+case "clear":
+if (args[1]) {
+    if (args[1] > 2) {
+        if (args[1] > 50) {
+            message.reply("You are clearing too much messages!");
+        }
+        else {
+let messagecount = parseInt(args[1]);
+  message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
         }
     } else {
-        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
+        message.reply("You can only delete 3 messages or more.");
     }
+} else {
+    message.reply("Please type number of messages to delete.");
 }
 break;
 
@@ -235,6 +222,28 @@ break;
                     .setColor(0x6bf442)
                     message.channel.sendEmbed(mcskin);
 		    break;
+
+case "say":
+if(message.author.id == "266083908490100737") {
+    var sayargs = message.content.substring(4).split(" ");
+                    const saymsg = sayargs.join(" ");
+                    message.delete().catch(O_o=>{});
+            message.channel.sendMessage(saymsg);
+    } else {
+ 
+        message.channel.send(":x: **Bot Owner Only**");
+    }
+break;
+		
+case "prefix":
+if(message.channel.type === 'dm') {
+  message.reply(":x: **This command is not allowed in PM's!** :x:");
+} else {
+  const newPrefix = args.slice(1).join(" ");
+  guilds[message.guild.id].prefix = newPrefix;
+  message.reply(`New prefix for **${message.guild.name}** is **${newPrefix}** ! :x: **NOTICE:** Prefix cannot be changed to music part, sorry. | PLEASE USE 1 LETTER PREFIX, YOU CAN GLITCH SOME COMMANDS!`);
+}
+break;
  
  
  
