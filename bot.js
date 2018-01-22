@@ -220,9 +220,7 @@ case "prune":
 }
 break;
 
-break;
-  
-	    case "mc":
+ 		case "mc":
 		    var mcargs = message.content.substring(4).split(" ");
                     const mcmsg = mcargs.join("");
                     message.delete().catch(O_o=>{});
