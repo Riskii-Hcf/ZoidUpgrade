@@ -32,7 +32,7 @@ var eb = ["You can help youself right?",
 "Very doubtful"];
  
 bot.on("ready", function() {
-      bot.user.setGame("dear-aquarius.glitch.me" , "https://www.twitch.tv/123silly");
+      bot.user.setGame("NEW BEST HYPIXEL 1.8/1.7 PVP CLIENT (FPS BOOST) 🔥 + Fps Pack Bundle Release! 💰" , "https://www.twitch.tv/123silly");
     console.log(`Started bot as: ${bot.user.tag}!`);
 });
  
