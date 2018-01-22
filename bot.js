@@ -117,7 +117,7 @@ case "mute":
 let modRolez = message.guild.roles.find("name", "Moderator");
 if (args[1]) {
 if(message.member.roles.has(modRolez.id)) {
-    if (message.guild.roles.find("name", "aloid-mute"))  {
+    if (message.guild.roles.find("name", "Muted"))  {
     message.guild.createRole({
         name: "aloid-mute",
         color: 0x000000,
@@ -143,7 +143,7 @@ return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
 case "unmute":
-let modRolezz = message.guild.roles.find("name", "BTMod");
+let modRolezz = message.guild.roles.find("name", "Moderator");
 if (args[1]) {
 if(message.member.roles.has(modRolezz.id)) {
 let unMember = message.guild.member(message.mentions.users.first());
@@ -158,7 +158,7 @@ return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
 case "warn":
-let modRoless = message.guild.roles.find("name", "BTMod");
+let modRoless = message.guild.roles.find("name", "Moderator");
 if (args[1]) {
 if(message.member.roles.has(modRoless.id)) {
 let wMember = message.guild.member(message.mentions.users.first());
@@ -173,7 +173,7 @@ else
   }
 break;
 case "unwarn":
-let modRolex = message.guild.roles.find("name", "BTMod");
+let modRolex = message.guild.roles.find("name", "Moderator");
 if (args[1]) {
 if(message.member.roles.has(modRolex.id)) {
 let uMember = message.guild.member(message.mentions.users.first());
