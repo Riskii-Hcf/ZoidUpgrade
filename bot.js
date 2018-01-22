@@ -250,54 +250,20 @@ if(message.channel.type === 'dm') {
   message.reply(`New prefix for **${message.guild.name}** is **${newPrefix}** ! :x: **NOTICE:** Prefix cannot be changed to music part, sorry. | PLEASE USE 1 LETTER PREFIX, YOU CAN GLITCH SOME COMMANDS!`);
 }
 break;
+
 		
-case "music":
-message.delete("music");
-const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel){
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-    voiceChannel.join()
-message.channel.sendMessage("```Music Module Started```")
-message.channel.sendMessage(prefix + "next " + music[Math.floor(Math.random() * music.length)]);
-break;
-case "skip":
-message.delete("skip");
-const voice = message.member.voiceChannel;
-if(perms.includes(message.author.id)) {
-voice.leave();
-voice.join()
-
-} else {
-  message.channel.sendMessage(":x: Sorry No Perms")
-}
-break;
-
-case "next":
-message.delete("next");
-const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel){
-      return message.channel.sendMessage(":x: You are not in a voice channel!!");
-    }
-    voiceChannel.join()
-    .then(connection => {
-
-      let stream = yt(args.join(" "), {audioonly: true});
-      yt.getInfo(args.join(" "), function(err, info) {
-      const title = info.title
-	  message.channel.sendMessage(`Now playing \`${title}\``)
-      })
-      const dispatcher = connection.playStream(stream);
-      dispatcher.on('end', () => {
-        var myVar = setInterval(myTimer ,10000);
-function myTimer() {
-  message.channel.sendMessage(prefix + "next " + config.music[Math.floor(Math.random() * config.music.length)]);
-clearInterval(myVar)
-}
-       }).catch(e =>{
-         console.error(e);
-       });
-    })
+case "stats":
+var statsembed = new Discord.RichEmbed()
+.setTitle(`Latenci Status`)
+.setDescription(`Status:`, true)
+.addField(`Up Time:`, parseTime(bot.uptime), true)
+.addField(`Servers: `, `${bot.guilds.array().length}`, true)
+.addField(`Members: `, `${bot.users.size}`, true)
+.addField(`Channels: `, `${bot.channels.size}`, true)
+.addField(`Status: `, `ONLINE`, true)
+.setFooter(`Made by Telk#6039 and 123silly#5224`)
+.setColor(hexcols[~~(Math.random() * hexcols.length)]);
+message.channel.sendEmbed(statsembed);
 break;
  
  
