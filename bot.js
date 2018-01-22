@@ -130,7 +130,7 @@ if(message.member.roles.has(modRolez.id)) {
     });
 } else {
     let smuteMember = message.guild.member(message.mentions.users.first());
-    smuteMember.addRole(unMember.guild.roles.find("name", "aloid-mute"));
+    smuteMember.addRole(unMember.guild.roles.find("name", "Muted"));
     message.channel.sendMessage(":arrow_right: The Member Has Been Muted! :point_left:");
     message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
 }
