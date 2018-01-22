@@ -32,7 +32,7 @@ var eb = ["You can help youself right?",
 "Very doubtful"];
  
 bot.on("ready", function() {
-      bot.user.setGame("Fps Boosting Client 1.7/1.8 + Fps Pack Bundle Release!" , "https://www.twitch.tv/123silly");
+      bot.user.setGame("Fps Boost Client And Fps Pack Release!" , "https://www.twitch.tv/123silly");
     console.log(`Started bot as: ${bot.user.tag}!`);
 });
  
