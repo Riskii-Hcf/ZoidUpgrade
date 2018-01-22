@@ -188,6 +188,53 @@ else
 return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
+  
+case "prune":
+ if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
+        if (args.length === 0) {
+            message.channel.send('Please provide a number.');
+        } else if (args.length === 1) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                var channel_id = message.channel.name
+                message.channel.bulkDelete(messages);
+        } else if (args.length === 2) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                let bulkMessages = [];
+                var channel_id = message.channel.name
+                messages.forEach((i) => {
+                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
+                        bulkMessages.push(i);
+                    }
+                });
+                message.channel.bulkDelete(bulkMessages);
+        } else {
+            message.channel.send(':x: This is not a number :x:');
+        }
+    } else {
+        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
+    }
+}
+break;
+  
+	    case "mcs":
+		    var mcargs = message.content.substring(4).split(" ");
+                    const mcmsg = mcargs.join("");
+                    message.delete().catch(O_o=>{});
+		    var mcskin = new Discord.RichEmbed()
+		    .setTitle(`Minecraft Information`)
+		    .setDescription(`Welcome back ` + mcmsg + `! Here is some information about you:`)
+                    .addField(`Username:`, mcmsg, true)
+		    .addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=`+mcmsg+`&s=700`, true)
+		    .addField(`Use this skin to your account:`, `[Click Me!](https://www.minecraft.net/profile/skin/remote?url=https://minecraft.net/skin/`+mcmsg+`.png)`)
+                    .setFooter(`LightBlue 3.0v | 123silly`)
+		    .setThumbnail(`https://minotar.net/avatar/`+mcmsg+`/100.png`)
+                    .setColor(0x6bf442)
+                    message.channel.sendEmbed(mcskin);
+		    break;
  
  
  
