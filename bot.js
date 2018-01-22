@@ -251,11 +251,6 @@ if(message.channel.type === 'dm') {
 }
 break;
 		
-case "ping":
-message.channel.send("Pinging...").then(pong => {
-        pong.edit(`Pong!\n${bot.user.tag}: **${pong.createdTimestamp - message.createdTimestamp}ms**\nAPI **${Math.round(bot.ping)}ms**`)
-      })
-break;
 case "music":
 message.delete("music");
 const voiceChannel = message.member.voiceChannel;
@@ -278,23 +273,6 @@ voice.join()
 }
 break;
 
-
-
-
-
-}
-});
-
-bot.on("message", function(message) {
-
-if (!message.content.startsWith(prefix)) return;
-
-var args = message.content.substring(prefix.length).split(" ");
-
-
-
-
-switch (args[0].toLowerCase()) {
 case "next":
 message.delete("next");
 const voiceChannel = message.member.voiceChannel;
