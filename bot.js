@@ -84,7 +84,7 @@ message.reply('The coin landed on tails');
 break;
 
         case "kick":
-    let modRoles = message.guild.roles.find("name", "BTMod");
+    let modRoles = message.guild.roles.find("name", "Moderator");
         if (args[1]) {
     if(message.member.roles.has(modRoles.id)) {
       let kickMember = message.guild.member(message.mentions.users.first());
@@ -99,7 +99,7 @@ break;
     }
 break;
 case "ban":
-    let modRolesss = message.guild.roles.find("name", "BTMod");
+    let modRolesss = message.guild.roles.find("name", "Moderator");
         if (args[1]) {
     if(message.member.roles.has(modRolesss.id)) {
       let banMember = message.guild.member(message.mentions.users.first());
@@ -114,7 +114,7 @@ case "ban":
     }
 break;
 case "mute":
-let modRolez = message.guild.roles.find("name", "BTMod");
+let modRolez = message.guild.roles.find("name", "Moderator");
 if (args[1]) {
 if(message.member.roles.has(modRolez.id)) {
     if (message.guild.roles.find("name", "aloid-mute"))  {
