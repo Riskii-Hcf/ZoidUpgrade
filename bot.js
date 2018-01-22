@@ -31,8 +31,9 @@ var eb = ["You can help youself right?",
 "Outlook not so good",
 "Very doubtful"];
  
-bot.on('ready', () => {
-  console.log(`[Start] ${new Date()}`);
+bot.on("ready", function() {
+      bot.user.setGame("dear-aquarius.glitch.me" , "https://www.twitch.tv/123silly");
+    console.log(`Started bot as: ${bot.user.tag}!`);
 });
  
 bot.on("guildMemberAdd", function(member) {
