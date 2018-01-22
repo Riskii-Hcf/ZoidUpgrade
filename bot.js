@@ -190,26 +190,53 @@ return message.reply(`:x: **Please mention a user** :x:`);
 break;
   
 case "prune":
-
-if (message.member.hasPermission("MANAGE_MESSAGES")) {
-            message.channel.fetchMessages()
-               .then(function(list){
-                    message.channel.bulkDelete(list);
-                }, function(err){message.channel.send("An error has occured while clearing whole channel... :cry:")})
+ if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
+        if (args.length === 0) {
+            message.channel.send('Please provide a number.');
+        } else if (args.length === 1) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                var channel_id = message.channel.name
+                message.channel.bulkDelete(messages);
+        } else if (args.length === 2) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                let bulkMessages = [];
+                var channel_id = message.channel.name
+                messages.forEach((i) => {
+                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
+                        bulkMessages.push(i);
+                    }
+                });
+                message.channel.bulkDelete(bulkMessages);
+        } else {
+            message.channel.send(':x: This is not a number :x:');
         }
+    } else {
+        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
+    }
+}
+break;
 
 break;
   
-case "mc":
-var mc = new Discord.RichEmbed()
-.setTitle("Minecraft information")
-.setThumbnail('https://crafatar.com/renders/head/' + args[1] + '?helm&scale=10')
-.setDescription('information about ' + args[1])
-.addField('Username:', '' + args[1])
-.addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=` + args[1] + '&s=700')
-.addField('NameMc:', 'https://namemc.com/name/' + args[1])
-message.channel.sendEmbed(mc)
-break;
+	    case "mc":
+		    var mcargs = message.content.substring(4).split(" ");
+                    const mcmsg = mcargs.join("");
+                    message.delete().catch(O_o=>{});
+		    var mcskin = new Discord.RichEmbed()
+		    .setTitle(`Minecraft Information`)
+		    .setDescription(`Welcome back ` + mcmsg + `! Here is some information about you:`)
+                    .addField(`Username:`, mcmsg, true)
+		    .addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=`+mcmsg+`&s=700`, true)
+		    .addField(`Use this skin to your account:`, `[Click Me!](https://www.minecraft.net/profile/skin/remote?url=https://minecraft.net/skin/`+mcmsg+`.png)`)
+                    .setFooter(`Latenci`)
+		    .setThumbnail(`https://minotar.net/avatar/`+mcmsg+`/100.png`)
+                    .setColor(0x6bf442)
+                    message.channel.sendEmbed(mcskin);
+		    break;
  
  
  
