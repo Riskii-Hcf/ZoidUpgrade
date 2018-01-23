@@ -115,31 +115,14 @@ case "ban":
 break;
 case "mute":
 let modRolez = message.guild.roles.find("name", "Moderator");
-if (args[1]) {
 if(message.member.roles.has(modRolez.id)) {
-    if (message.guild.roles.find("name", "Muted"))  {
-    message.guild.createRole({
-        name: "Muted",
-        color: 0x000000,
-        permissions: [readMessageHistory, readMessages]
-    }).then(function(role) {
-        let muteMember = message.guild.member(message.mentions.users.first());
-        muteMember.addRole(role);
-        message.channel.sendMessage(":fire: You Have been Muted on Riskii's Discord :fire:");
-      message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
-    });
-} else {
-    let smuteMember = message.guild.member(message.mentions.users.first());
-    smuteMember.addRole(unMember.guild.roles.find("name", "Muted"));
-    message.channel.sendMessage(":arrow_right: The Member Has Been Muted! :point_left:");
-    message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
-}
+ let muteMember = message.guild.member(message.mentions.users.first());
+ muteMember.addRole(muteMember.guild.roles.find("name", "Muted"));
+ message.channel.sendMessage(":fire: You Have been Muted on Riskii's Discord :fire:);
+ message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
 }
 else {
-  return message.reply(":x: **You dont have permissions to do that!** :x:");
-}
-} else {
-return message.reply(`:x: **Please mention a user** :x:`);
+ return message.reply(":x: **You dont have role called Mod** :x:");
 }
 break;
 case "unmute":
@@ -148,7 +131,7 @@ if (args[1]) {
 if(message.member.roles.has(modRolezz.id)) {
 let unMember = message.guild.member(message.mentions.users.first());
 unMember.removeRole(unMember.guild.roles.find("name", "Muted"));
-message.channel.sendMessage(":arrow_right: :tada: The Member Has Been Unmuted! :tada: :point_left:");
+message.channel.sendMessage(":fire: You Have been Unmuted on Riskii's Discord :fire:");
 message.mentions.users.first().send(`:tada: **You have been unmuted on ${message.guild.name}! :wink: Please contact <@${message.author.id}> for more information!** :tada:`)
 } else {
   return message.reply(":x: **You dont have permissions to do that!** :x:");
