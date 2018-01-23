@@ -223,17 +223,6 @@ break;
                     message.channel.sendEmbed(mcskin);
 		    break;
 		
-case "prefix":
-if(message.channel.type === 'dm') {
-  message.reply(":x: **This command is not allowed in PM's!** :x:");
-} else {
-  const newPrefix = args.slice(1).join(" ");
-  guilds[message.guild.id].prefix = newPrefix;
-  message.reply(`New prefix for **${message.guild.name}** is **${newPrefix}** ! :x: **NOTICE:** Prefix cannot be changed to music part, sorry. | PLEASE USE 1 LETTER PREFIX, YOU CAN GLITCH SOME COMMANDS!`);
-}
-break;
-
-		
 case "stats":
 var statsembed = new Discord.RichEmbed()
 .setTitle(`Latenci Status`)
