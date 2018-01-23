@@ -1,12 +1,6 @@
 const Discord = require('discord.js');
  
 const bot = new Discord.Client();
-
-const yt = require('ytdl-core');
-
-var config = require("./config.json");
-
-var music = require("./playlist.json");
  
 const token = "Hell Nah";
  
@@ -228,18 +222,6 @@ break;
                     .setColor(0x6bf442)
                     message.channel.sendEmbed(mcskin);
 		    break;
-
-case "say":
-if(message.author.id == "266083908490100737") {
-    var sayargs = message.content.substring(4).split(" ");
-                    const saymsg = sayargs.join(" ");
-                    message.delete().catch(O_o=>{});
-            message.channel.sendMessage(saymsg);
-    } else {
- 
-        message.channel.send(":x: **Bot Owner Only**");
-    }
-break;
 		
 case "prefix":
 if(message.channel.type === 'dm') {
