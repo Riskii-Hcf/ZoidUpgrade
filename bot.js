@@ -97,9 +97,6 @@ var basicc = new Discord.RichEmbed()
 .addField(`=ping`, `Display Your Ping`)
 .addField(`=animesearch`, `Search Anime [Does Not Work Yet]`)
 .setColor(hexcols[~~(Math.random() * hexcols.length)]);
-		
-	case "help":
-	message.reply(`The Prefix Is = \Command List`);
 	break;
 
 case "ping":
