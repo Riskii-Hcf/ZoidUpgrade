@@ -118,7 +118,7 @@ let modRolez = message.guild.roles.find("name", "Moderator");
 if(message.member.roles.has(modRolez.id)) {
  let muteMember = message.guild.member(message.mentions.users.first());
  muteMember.addRole(muteMember.guild.roles.find("name", "Muted"));
- message.channel.sendMessage(":fire: You Have been Muted on Riskii's Discord :fire:);
+ message.channel.sendMessage(":fire: You Have been Muted on Riskii's Discord :fire:");
  message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
 }
 else {
