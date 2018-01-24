@@ -83,6 +83,21 @@ message.reply('The coin landed on tails');
 }
 break;
 		
+case "help":
+var basicc = new Discord.RichEmbed()
+.setTitle(`Basic Commands`)
+.setDescription(`Nerd Bot`)
+.addField(`=8ball`, `use a magic :8ball: ball in discord!`)
+.addField(`=coinflip`, `Displays A Virtual CoinFlip Result`)
+.addField(`=ban`, `Bans A Player`)
+.addField(`=mc`, `Displays the Minecraft Info`)
+.addField(`=mute`, `Mutes A Player`)
+.addField(`=unmute`, `Unutes A Player`)
+.addField(`=kick`, `Kicks A Player`)
+.addField(`=ping`, `Display Your Ping`)
+.addField(`=animesearch`, `Search Anime [Does Not Work Yet]`)
+.setColor(hexcols[~~(Math.random() * hexcols.length)]);
+		
 	case "help":
 	message.reply(`The Prefix Is = \Command List`);
 	break;
