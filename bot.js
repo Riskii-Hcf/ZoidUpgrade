@@ -104,7 +104,7 @@ case "searchanime":
 if (args[1]) {
     message.reply(`http://kissanime.ru/Anime/` + args[1]);
 } else {
-    message.reply(`How to use: \n${prefix}searchanime [anime] **NOTICE: DONT USE SPACES, USE - !!**`);
+    message.reply(`How to use: \n${prefix}searchanime [anime] **NOTICE: DONT USE SPACES, USE - =**`);
 }
 break;
 
@@ -147,7 +147,7 @@ if(message.member.roles.has(modRolez.id)) {
  message.mentions.users.first().send(`:x: **You have been MUTED on ${message.guild.name}! :thinking: Please contact <@${message.author.id}> for more information!** :x:`)
 }
 else {
- return message.reply(":x: **You dont have role called Mod** :x:");
+ return message.reply("=mute [player]");
 }
 break;
 case "unmute":
@@ -162,7 +162,7 @@ message.mentions.users.first().send(`:tada: **You have been unmuted on ${message
   return message.reply(":x: **You dont have permissions to do that!** :x:");
 }
 } else {
-return message.reply(`:x: **Please mention a user** :x:`);
+return message.reply(`=unmute [player]`);
 }
 break;
 case "warn":
@@ -177,7 +177,7 @@ else
 {
   return message.reply(":x: **You dont have permissions to do that!** :x:");
   } } else {
-      return message.reply(`:x: **Please mention a user** :x:`);
+      return message.reply(`=mute [player]`);
   }
 break;
 case "unwarn":
