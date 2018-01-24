@@ -84,7 +84,8 @@ message.reply('The coin landed on tails');
 break;
 		
 	case "help":
-	message.reply(`In Progress Rn`);
+	message.reply(`The Prefix Is = \Command List`);
+	break;
 
 case "ping":
 message.reply(`Pong! ${Math.round(bot.ping)}ms`);
