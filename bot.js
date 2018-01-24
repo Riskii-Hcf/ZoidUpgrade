@@ -82,6 +82,9 @@ var result = Math.floor((Math.random() * 2) + 1);
 message.reply('The coin landed on tails');
 }
 break;
+		
+	case "help":
+	message.reply(`In Progress Rn`);
 
 case "ping":
 message.reply(`Pong! ${Math.round(bot.ping)}ms`);
