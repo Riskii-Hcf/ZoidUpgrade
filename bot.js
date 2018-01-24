@@ -197,7 +197,7 @@ return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
   
-case "clear":
+case "purge":
 if (args[1]) {
     if (args[1] > 2) {
         if (args[1] > 50) {
@@ -208,7 +208,7 @@ let messagecount = parseInt(args[1]);
   message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
         }
     } else {
-        message.reply("You can only delete 3 messages or more.");
+        message.reply("You can only delete 5 messages or more.");
     }
 } else {
     message.reply("Please type number of messages to delete.");
