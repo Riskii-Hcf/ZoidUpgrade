@@ -94,29 +94,11 @@ break;
             .addField(`=ping`, `Shows Your Ping Not 100% Correct.`)
             .addField(`=animesearch`, `Pauses current song.`)
             .addField(`=emojis`, `Shows A L Image`)
-            .addField(`= [ALL/Position]`, `Removes the song or other.`)
+            .addField(`=say`, `Says Whatever You Say.`)
             .addField(`$mnowplaying`, `You can now see whats playing.`)
             .addField(`$mqueue`, `Queue of the songs in your server.`)
             .addField(`$$mshuffle`, `Shuffles songs you have added.`)
             .setFooter("Made by 123silly#5224 | LightBlue 3.0v")
-            .setColor(0x1ab517)
-            message.author.sendEmbed(embedt)
-           var embedth = new Discord.RichEmbed()
-           .setTitle("Fun Commands")
-           .setDescription(":smiley: Some Fun Commands :smiley:")
-           .addField(`$$dankmemes`, `Dank memes generator...`)
-           .addField(`$$kill [mention]`, `Kills a user you mentioned.`)
-           .addField(`$$afk`, `Makes you afk so no one disturbs you!`)
-           .addField(`$$unafk`, `Makes You No Longer afk.`)
-           .addField(`$$cutecat`, `Sends a cute cat.`)
-           .addField(`$$hello`, `Says hello to LightBlue / Responses: $$good $$bad $$sad`)
-           .addField(`$$user`, `Tells some information about you.`)
-           .addField(`$$pm [text]`, `PMs you the text you wrote | **FEATURE GLITCHED OUT!!**`)
-           .addField(`$$8ball [Question]`, `You ask a question and LightBlue randomly answers!`)
-           .setFooter("Made by 123silly#5224 | LightBlue 3.0v")
-           .setColor(0xf44141)
-           message.author.sendEmbed(embedth)
-           var embedf = new Discord.RichEmbed()
            .setTitle(`Moderation Commands`)
            .setDescription(`:hammer: Kicks, Bans etc. :hammer:`)
            .addField(`$$kick [mention]`, `Kicks a member. | **REASONS OF KICKS NOT ADDED**`)
@@ -149,6 +131,13 @@ break;
 case "ping":
 message.reply(`Pong! ${Math.round(bot.ping)}ms`);
 break;
+		
+case "say":
+    var sayargs = message.content.substring(5).split(" ");
+                    const saymsg = sayargs.join(" ");
+                    message.delete().catch(O_o=>{});
+		    message.channel.sendMessage(saymsg);
+  break;
 
 case "anime":
 var aembedo = new Discord.RichEmbed()
