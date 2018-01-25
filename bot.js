@@ -166,7 +166,7 @@ var aembed = new Discord.RichEmbed()
 .setColor(0x721487)
 message.channel.sendEmbed(aembed);
 break;
-case "searchanime":
+case "animesearch":
 if (args[1]) {
     message.reply(`www.animepower.net/` + args[1]);
 } else {
