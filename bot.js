@@ -98,6 +98,7 @@ var basicc = new Discord.RichEmbed()
 .addField(`/coinflip`, `Flips a virtual Coin`)
 .setColor(hexcols[~~(Math.random() * hexcols.length)]);
 message.author.sendEmbed(basicc)
+break;
 
 case "ping":
 message.reply(`Pong! ${Math.round(bot.ping)}ms`);
