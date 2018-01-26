@@ -214,82 +214,48 @@ return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
   
-case "purge":
-if (args[1]) {
-    if (args[1] > 2) {
-        if (args[1] > 50) {
-            message.reply("You are clearing too much messages!");
-        }
-        else {
-let messagecount = parseInt(args[1]);
-  message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+case "prune":
+ if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
+        if (args.length === 0) {
+            message.channel.send('Please provide a number.');
+        } else if (args.length === 1) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                var channel_id = message.channel.name
+                message.channel.bulkDelete(messages);
+        } else if (args.length === 2) {
+            message.channel.fetchMessages({
+                limit: parseInt(args[0]) + 1
+            }).then((messages) => {
+                let bulkMessages = [];
+                var channel_id = message.channel.name
+                messages.forEach((i) => {
+                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
+                        bulkMessages.push(i);
+                    }
+                });
+                message.channel.bulkDelete(bulkMessages);
+        } else {
+            message.channel.send(':x: This is not a number :x:');
         }
     } else {
-        message.reply("You can only delete 5 messages or more.");
+        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
     }
-} else {
-    message.reply("Please type number of messages to delete.");
 }
 break;
-
- 		case "mc":
-		    var mcargs = message.content.substring(4).split(" ");
-                    const mcmsg = mcargs.join("");
-                    message.delete().catch(O_o=>{});
-		    var mcskin = new Discord.RichEmbed()
-		    .setTitle(`Minecraft Information`)
-		    .setDescription(`Welcome back ` + mcmsg + `! Here is some information about you:`)
-                    .addField(`Username:`, mcmsg, true)
-		    .addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=`+mcmsg+`&s=700`, true)
-		    .addField(`Use this skin to your account:`, `[Click Me!](https://www.minecraft.net/profile/skin/remote?url=https://minecraft.net/skin/`+mcmsg+`.png)`)
-                    .setFooter(`Latenci`)
-		    .setThumbnail(`https://minotar.net/avatar/`+mcmsg+`/100.png`)
-                    .setColor(0x6bf442)
-                    message.channel.sendEmbed(mcskin);
-		    break;
-		
-case "serverinfo":
-message.delete("serverinfo")
-var sie = new Discord.RichEmbed()
-.setTitle(`--==Server Info==--`)
-.setDescription(`The information about this server is here:`)
-.addField(`Name:`, message.guild.name, true)
-.addField(`ID:`, message.guild.id, true)
-.addField(`Owner:`, message.guild.owner, true)
-.addField(`Server Region:`, message.guild.region, true)
-.addField(`Channels:`, message.guild.channels.size, true)
-.addField(`Membercount:`, message.guild.memberCount, true)
-.addField(`Server Created At:`, message.guild.createdAt, true)
-.setFooter(`Latenci`)
-.setColor(hexcols[~~(Math.random() * hexcols.length)]);
-message.channel.sendEmbed(sie)
+case "mc":
+var mc = new Discord.RichEmbed()
+.setTitle("Minecraft information")
+.setThumbnail('https://crafatar.com/renders/head/' + args[1] + '?helm&scale=10')
+.setDescription('information about ' + args[1])
+.addField('Username:', '' + args[1])
+.addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=` + args[1] + '&s=700')
+.addField('NameMc:', 'https://namemc.com/name/' + args[1])
+.setFooter('By Telk#6039')
+message.channel.sendEmbed(mc)
 break;
 		
-case "userinfo":
-if (args[1]) {
-
-let useri = message.mentions.users.first();
-var ui = new Discord.RichEmbed()
-.setTitle(`--==User Info==--`)
-.setDescription(`<@${useri.id}>'s Info:`)
-.setThumbnail(useri.avatarURL)
-.addField("Account Created:", `${useri.createdAt}`)
-.addField(`Username:`, `${useri.username}`)
-.addField(`Status:`,`${useri.presence.status}`)
-.addField(`Avatar:`, `${useri.avatarURL}`)
-.addField("ID:", `${useri.id}`)
-.setFooter("Latenci")
-.setColor(0xff0000)
-message.channel.sendEmbed(ui)
-} else {
-  message.channel.sendMessage("Who's UserInfo Are You Asking For?");
-}
-break;
-		
-case "bp":
-message.channel.fetchMessages({limit: 100}).then(messages => message.channel.bulkDelete(messages));
-message.reply("Chat Has Been Cleared");
-break;
  
  
  
