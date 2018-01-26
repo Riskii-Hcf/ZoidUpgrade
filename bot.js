@@ -100,7 +100,7 @@ var embedt = new Discord.RichEmbed()
 .addField(`=kick [user]`, `Kicks A User.`)
 .addField(`=mute [user]`, `Mutes A User.`)
 .addField(`=umute [user]`, `Unmutes A User.`)
-.setFooter("Made by B4Galaxy#3057 | Latenci
+.setFooter("Latenci [Help]")
 .setColor(0x1ab517)
 message.author.sendEmbed(embedt)
 break;
