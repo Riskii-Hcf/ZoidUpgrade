@@ -118,8 +118,8 @@ case "say":
   break;
 
 case "animesearch":
-if (args[1]) {
-    message.reply(`https://www.animepower.net/` + args[3]);
+if (args[1]) (args[2]){
+    message.reply(`https://www.animepower.net/` + args[1] + args[2]);
 } else {
     message.reply(`How to use: \n${prefix}searchanime [anime] **NOTICE: DONT USE SPACES, USE - =**`);
 }
