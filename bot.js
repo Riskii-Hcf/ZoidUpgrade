@@ -221,41 +221,11 @@ var mc = new Discord.RichEmbed()
 .addField('Username:', '' + args[1])
 .addField(`Skin:`, `https://minecraftskinstealer.com/skin.php?u=` + args[1] + '&s=700')
 .addField('NameMc:', 'https://namemc.com/name/' + args[1])
-.setFooter('By Telk#6039')
+.setFooter('Latenci')
 message.channel.sendEmbed(mc)
 break;
 		
-case "prune":
- if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
-        if (args.length === 0) {
-            message.channel.send('Please provide a number.');
-        } else if (args.length === 1) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                var channel_id = message.channel.name
-                message.channel.bulkDelete(messages);
-        } else if (args.length === 2) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                let bulkMessages = [];
-                var channel_id = message.channel.name
-                messages.forEach((i) => {
-                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
-                        bulkMessages.push(i);
-                    }
-                });
-                message.channel.bulkDelete(bulkMessages);
-        } else {
-            message.channel.send(':x: This is not a number :x:');
-        }
-    } else {
-        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
-    }
-}
-break;
-		
+	
  
  
  
