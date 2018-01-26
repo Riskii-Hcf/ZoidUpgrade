@@ -285,6 +285,11 @@ message.channel.sendEmbed(ui)
   message.channel.sendMessage("Who's UserInfo Are You Asking For?");
 }
 break;
+		
+case "bp":
+message.channel.fetchMessages({limit: 100}).then(messages => message.channel.bulkDelete(messages));
+message.reply("Chat Has Been Cleared");
+break;
  
  
  
