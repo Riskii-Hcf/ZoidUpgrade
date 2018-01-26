@@ -213,37 +213,6 @@ else
 return message.reply(`:x: **Please mention a user** :x:`);
 }
 break;
-  
-case "prune":
- if (message.channel.permissionsFor(message.author).has('MANAGE_MESSAGES')) {
-        if (args.length === 0) {
-            message.channel.send('Please provide a number.');
-        } else if (args.length === 1) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                var channel_id = message.channel.name
-                message.channel.bulkDelete(messages);
-        } else if (args.length === 2) {
-            message.channel.fetchMessages({
-                limit: parseInt(args[0]) + 1
-            }).then((messages) => {
-                let bulkMessages = [];
-                var channel_id = message.channel.name
-                messages.forEach((i) => {
-                    if (i.author.id === args[1].replace(/@|<|>/g, "")) {
-                        bulkMessages.push(i);
-                    }
-                });
-                message.channel.bulkDelete(bulkMessages);
-        } else {
-            message.channel.send(':x: This is not a number :x:');
-        }
-    } else {
-        message.channel.send("You need MANAGE_MESSAGES permissions to do that.");
-    }
-}
-break;
 case "mc":
 var mc = new Discord.RichEmbed()
 .setTitle("Minecraft information")
