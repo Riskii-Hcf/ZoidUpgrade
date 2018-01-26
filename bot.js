@@ -37,7 +37,7 @@ bot.on("ready", function() {
 });
  
 bot.on("guildMemberAdd", function(member) {
-let joinleaves = member.guild.channels.find("name","general");
+let joinleaves = member.guild.channels.find("name","main-chat");
 if(!joinleaves) return;
 joinleaves.sendMessage(member.toString() + " welcome to the server!");
  
@@ -47,7 +47,7 @@ if(!joinleaves) return;
  
 bot.on("guildMemberRemove", function(member) {
  
-let joinleaves = member.guild.channels.find("name","general");
+let joinleaves = member.guild.channels.find("name","main-chat");
  
 if(!joinleaves) return;
  
@@ -248,18 +248,42 @@ break;
                     message.channel.sendEmbed(mcskin);
 		    break;
 		
-case "stats":
-var statsembed = new Discord.RichEmbed()
-.setTitle(`Latenci Status`)
-.setDescription(`Status:`, true)
-.addField(`Up Time:`, parseTime(bot.uptime), true)
-.addField(`Servers: `, `${bot.guilds.array().length}`, true)
-.addField(`Members: `, `${bot.users.size}`, true)
-.addField(`Channels: `, `${bot.channels.size}`, true)
-.addField(`Status: `, `ONLINE`, true)
-.setFooter(`Made by Telk#6039 and 123silly#5224`)
+case "serverinfo":
+message.delete("serverinfo")
+var sie = new Discord.RichEmbed()
+.setTitle(`--==Server Info==--`)
+.setDescription(`The information about this server is here:`)
+.addField(`Name:`, message.guild.name, true)
+.addField(`ID:`, message.guild.id, true)
+.addField(`Owner:`, message.guild.owner, true)
+.addField(`Server Region:`, message.guild.region, true)
+.addField(`Channels:`, message.guild.channels.size, true)
+.addField(`Membercount:`, message.guild.memberCount, true)
+.addField(`Server Created At:`, message.guild.createdAt, true)
+.setFooter(`Latenci`)
 .setColor(hexcols[~~(Math.random() * hexcols.length)]);
-message.channel.sendEmbed(statsembed);
+message.channel.sendEmbed(sie)
+break;
+		
+case "userinfo":
+if (args[1]) {
+
+let useri = message.mentions.users.first();
+var ui = new Discord.RichEmbed()
+.setTitle(`--==User Info==--`)
+.setDescription(`<@${useri.id}>'s Info:`)
+.setThumbnail(useri.avatarURL)
+.addField("Account Created:", `${useri.createdAt}`)
+.addField(`Username:`, `${useri.username}`)
+.addField(`Status:`,`${useri.presence.status}`)
+.addField(`Avatar:`, `${useri.avatarURL}`)
+.addField("ID:", `${useri.id}`)
+.setFooter("Latenci")
+.setColor(0xff0000)
+message.channel.sendEmbed(ui)
+} else {
+  message.channel.sendMessage("Who's UserInfo Are You Asking For?");
+}
 break;
  
  
