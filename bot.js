@@ -225,6 +225,24 @@ var mc = new Discord.RichEmbed()
 message.channel.sendEmbed(mc)
 break;
 		
+case "clear":
+if (args[1]) {
+    if (args[1] > 2) {
+        if (args[1] > 50) {
+            message.reply("You are clearing too much messages!");
+        }
+        else {
+let messagecount = parseInt(args[1]);
+  message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+        }
+    } else {
+        message.reply("You can only delete 3 messages or more.");
+    }
+} else {
+    message.reply("Please type number of messages to delete.");
+}
+break;
+		
 	
  
  
