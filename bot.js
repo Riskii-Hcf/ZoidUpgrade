@@ -32,12 +32,12 @@ var eb = ["You can help youself right?",
 "Very doubtful"];
  
 bot.on("ready", function() {
-      bot.user.setGame("🔥 Fps Boost Client And Fps Pack Release! 🔥 Prefix [=]" , "https://www.twitch.tv/123silly");
+      bot.user.setGame("Riskii Bot Prefix [=]" , "https://www.twitch.tv/123silly");
     console.log(`Started bot as: ${bot.user.tag}!`);
 });
  
 bot.on("guildMemberAdd", function(member) {
-let joinleaves = member.guild.channels.find("name","main-chat");
+let joinleaves = member.guild.channels.find("name","welcome");
 if(!joinleaves) return;
 joinleaves.sendMessage(member.toString() + " welcome to the server!");
  
@@ -47,7 +47,7 @@ if(!joinleaves) return;
  
 bot.on("guildMemberRemove", function(member) {
  
-let joinleaves = member.guild.channels.find("name","main-chat");
+let joinleaves = member.guild.channels.find("name","welcome");
  
 if(!joinleaves) return;
  
